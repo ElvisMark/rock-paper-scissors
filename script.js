@@ -3,4 +3,4 @@ function getComputerChoice () {
     const atRandom = Math.floor(Math.random * choice.length)
     return choice [atRandom]
 }
-console.log(getComputerChoice())
+console.log(getComputerChoice());
