@@ -6,7 +6,7 @@ function getComputerChoice () {
 
 //console.log(getComputerChoice());
 
-function  playRound(getHumanChoice,getComputerChoice) {
+function  playRound(playerSelection,computerSelection) {
     
     const winningCondition = {
         rock : 'scissors',
@@ -14,5 +14,14 @@ function  playRound(getHumanChoice,getComputerChoice) {
         scissors : 'paper'
     }
 
-    
+        if (playerSelection === computerSelection){
+            return 'Thats a draw'
+        } else if (winningCondition[playerSelection] === computerSelection){
+            return `You Win ${playerSelection} beats ${computerSelection}`;
+        } else {
+            return `You Lose ${computerSelection} beats ${playerSelection}`
+        };
+
 }
+
+
