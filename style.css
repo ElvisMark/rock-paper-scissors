@@ -1,21 +1,100 @@
-*{
-    font-family: sans-serif;
-    font-style: normal;
-    background-color: crimson;
-  }
 body {
-    width: 50%;
-    max-width: 800px;
-    min-width: 480px;
-    margin: 0 auto;
-  }        
-  *{
-    font-family: sans-serif;
-    font-style: normal;
-  }
-body {
-    width: 50%;
-    max-width: 800px;
-    min-width: 480px;
-    margin: 0 auto;
-  }        
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+
+.game-container {
+  text-align: center;
+  border: 2px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button#rock {
+  background-color: #ff4d4d; 
+}
+
+button#paper {
+  background-color: #4d94ff; 
+}
+
+button#scissors {
+  background-color: #4dff4d; 
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#result {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+#score {
+  margin-top: 20px;
+}
+
+#score p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+#playerScore, #computerScore {
+  font-weight: bold;
+}
+
+button#reset {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffcc00; /* Yellow */
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button#reset:hover {
+    background-color: #ffb800; /* Darker yellow */
+}
+
+button#reset {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffcc00; /* Yellow */
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button#reset:hover {
+  background-color: #ffb800; /* Darker yellow */
+}

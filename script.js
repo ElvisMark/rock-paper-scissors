@@ -1,10 +1,12 @@
+let humanScore = 0;
+let computerScore = 0;
+
+
 function getComputerChoice () {
     const choice = ['rock','paper','scissors'];
-    const atRandom = Math.floor(Math.random() * choice.length);
-    return choice [atRandom];
+    const choiceRandom = Math.floor(Math.random() * choice.length);
+    return choice [choiceRandom];
 }
-
-//console.log(getComputerChoice());
 
 function  playRound (humanSelection,computerSelection) {
     
@@ -21,50 +23,83 @@ function  playRound (humanSelection,computerSelection) {
         } else if (winningCondition[humanSelection] === computerSelection.toLowerCase()){
             return `You Win! ${humanSelection} beats ${computerSelection}`;
         } else {
-            return `You Lose ${computerSelection} beats ${humanSelection}`
+            return `You Lose! ${computerSelection} beats ${humanSelection}`
         };
 
 }
 
-function getHumanChoice () {
-    let humanInput = prompt('Enter your choice: Rock,Paper,scissors');
+const resultDisplay = document.querySelector('#result')
+const playerScoreSpan = document.querySelector('#playerScore')
+const computerScoreSpan = document.querySelector('#computerScore')
+const resetButton = document.querySelector('#reset');
 
-    while (!['rock', 'paper', 'scissors'].includes(humanInput.toLowerCase())) {
-        humanInput = prompt("Invalid choice! Please select Rock, Paper, or Scissors:");
+
+function updateScores(result) {
+    if (result.startsWith("You Win!")) {
+        humanScore++;
+    } else if (result.startsWith("You Lose!")) {
+        computerScore++;
     }
 
-    return humanInput;
-}
+    playerScoreSpan.textContent = humanScore;
+    computerScoreSpan.textContent= computerScore
 
 
-function playGame () {
-    let humanScore = 0;
-    let computerScore = 0;
+    if (humanScore === 5 || computerScore === 5) {
+        let gameResultMessage;
 
-
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        const result = playRound(humanSelection, computerSelection);
-        console.log(result);
-
-
-        if (result.startsWith("You Win!")) {
-            humanScore++;
-        } else if (result.startsWith("You Lose!")) {
-            computerScore++;
+        if (humanScore === 5) {
+            gameResultMessage = 'Player Wins The Game!';
+        } else if (computerScore === 5) {
+            gameResultMessage = 'Computer Wins The Game!';
+        } else {
+            gameResultMessage = "It's a Tie!";
         }
+
+        resultDisplay.textContent = gameResultMessage;
+
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
     }
 
-    // Display final scores and determine the winner
-    console.log(`Final Scores - Human: ${humanScore}, Computer: ${computerScore}`);
-    if (humanScore > computerScore) {
-        console.log("You win the game!");
-    } else if (humanScore < computerScore) {
-        console.log("You lose the game!");
-    } else {
-        console.log("It's a tie!");
-    }
 }
 
-playGame();
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+
+    playerScoreSpan.textContent = humanScore;
+    computerScoreSpan.textContent =computerScore;
+    resultDisplay.textContent = '';
+
+    rock.disabled = false;
+    paper.disabled = false;
+    scissors.disabled = false;
+}
+
+// adding event listeners
+
+const rock = document.querySelector("#rock")
+rock.addEventListener('click', () =>{
+    const computerSelection = getComputerChoice();
+    const result = (playRound('rock',computerSelection))
+    resultDisplay.textContent =result;
+    updateScores(result);
+})
+const paper = document.querySelector("#paper")
+paper.addEventListener('click', () => {
+    const computerSelection = getComputerChoice();
+    const result = (playRound('paper',computerSelection))
+    resultDisplay.textContent =result;
+    updateScores(result);
+})
+const scissors = document.querySelector('#scissors')
+scissors.addEventListener('click', () => {
+    const computerSelection = getComputerChoice();
+    const result = (playRound('scissors',computerSelection))
+    resultDisplay.textContent =result;
+    updateScores(result);
+})
+
+resetButton.addEventListener('click', resetGame);
