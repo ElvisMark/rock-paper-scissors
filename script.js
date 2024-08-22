@@ -1,7 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
 
-
 function getComputerChoice () {
     const choice = ['rock','paper','scissors'];
     const choiceRandom = Math.floor(Math.random() * choice.length);
