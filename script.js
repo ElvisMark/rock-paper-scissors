@@ -33,7 +33,6 @@ const playerScoreSpan = document.querySelector('#playerScore')
 const computerScoreSpan = document.querySelector('#computerScore')
 const resetButton = document.querySelector('#reset');
 
-
 function updateScores(result) {
     if (result.startsWith("You Win!")) {
         humanScore++;
